@@ -17,16 +17,58 @@ function getInputValue(boxID) {
     inputBox.value = ''
     return inputAmount
   }
-depositBtn.addEventListener('click',function (event) {
-    event.preventDefault();
-    let depositBox = document.getElementById('deposit-box');
-    // console.log(depositBox.value);
-    let availableBalnace = parseFloat(depositField.innerText);
-    let inputNumber = parseFloat(depositBox.value);
-    if (isNaN(inputNumber) || (inputNumber < 0)) {
-        depositBox.value = '';
-        return alert('Please Input Valid Number');
+// Update Balance
+depositBtn.addEventListener('click', function (event) {
+    event.preventDefault()
+    let availableAmount = parseFloat(balanceField.innerText)
+    let inputAmount = getInputValue('deposit-box')
+    if (inputAmount > 0) {
+      balanceField.innerText = inputAmount + availableAmount
     }
-    depositField.innerText = inputNumber + availableBalnace;
-    depositBox.value = '';
-})
+  })
+  
+  // depositBtn.addEventListener('click', function (event) {
+  //   event.preventDefault()
+  //   let depositBox = document.getElementById('deposit-box')
+  //   let availableBalance = parseFloat(balanceField.innerText)
+  //   let inputAmount = parseFloat(depositBox.value)
+  //   if (isNaN(inputAmount) || inputAmount < 0) {
+  //     depositBox.value = ''
+  //     return alert('Please input valid amount of money in number format')
+  //   }
+  //   balanceField.innerText = inputAmount + availableBalance
+  //   depositBox.value = ''
+  // })
+  
+  // Buy Coins
+  buyBtc.addEventListener('click', function () {
+    updatePortfolio('btc-box')
+  })
+  
+  buyEth.addEventListener('click', function () {
+    updatePortfolio('eth-box')
+  })
+  
+  // Update portfolio
+  function updatePortfolio(boxId) {
+    let availableAmount = parseFloat(balanceField.innerText)
+    let coinAmount = getInputValue(boxId)
+  
+    if (coinAmount > 0) {
+      let totalExpense
+      if (boxId == 'btc-box') {
+        totalExpense = 10 * coinAmount
+        if (totalExpense > availableAmount) {
+          return alert('Not enough balance')
+        }
+        btcField.innerText = coinAmount
+      } else if (boxId == 'eth-box') {
+        totalExpense = 5 * coinAmount
+        if (totalExpense > availableAmount) {
+          return alert('Not enough balance')
+        }
+        ethField.innerText = coinAmount
+      }
+      balanceField.innerText = availableAmount - totalExpense
+    }
+  }
