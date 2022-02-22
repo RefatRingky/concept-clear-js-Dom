@@ -6,7 +6,17 @@ const buyEth = document.getElementById('buy-eth')
 const depositField = document.getElementById('balance-field');
 const btcField = document.getElementById('btc-field');
 const ethField = document.getElementById('eth-field');
-
+// Get value from Input box
+function getInputValue(boxID) {
+    let inputBox = document.getElementById(boxID)
+    let inputAmount = parseFloat(inputBox.value)
+    if (isNaN(inputAmount) || inputAmount < 0) {
+      inputBox.value = ''
+      return alert('Please input valid amount of money in number format')
+    }
+    inputBox.value = ''
+    return inputAmount
+  }
 depositBtn.addEventListener('click',function (event) {
     event.preventDefault();
     let depositBox = document.getElementById('deposit-box');
