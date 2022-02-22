@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Tranding portfolio -->
+   <div>
+    <h1>Tranding Portfolio</h1>
+    <h3>Available Balance: $ <span id="balance-field">00</span></h3>
+    <h4>Available Bitcoin:  $ <span id="btc-field">00</span>BTC</h4>
+    <h4>Available Ethereum:  $ <span id="eth-field">00</span>ETH</h4>
+   </div>
+   <!-- Deposit portfolio -->
+   <div>
+       <h1>Deposit Money</h1>
+       <form action="">
+           <label for="deposit-box">Deposit Money</label>
+           <input id="deposit-box" placeholder="Enter Deposit Amount" type="text">
+           <button type="submit" id="deposit-btn">Deposit</button>
+       </form>
+   </div>
+   <!-- buy coin section -->
+   <div>
+       <h1>Buy Coins</h1>
+       <div>
+           <label for="btc-box">Buy Bitcoins:</label>
+           <input id="btc-box" type="text" placeholder="1 BTC =10$">
+           <button id="buy-btc" >Buy</button>
+       </div>
+       <br>
+       <div>
+           <label for="etc-box">Buy Ethereum:</label>
+           <input id="etc-box" type="text" placeholder="1 ETC =10$">
+           <button id="buy-etc" >Buy</button>
+       </div>
+   </div>
+  <script src="app.js"></script>  
+</body>
+</html>
